@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Fifth Capital</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <meta name="title" content="East Fifth Capital">
+    <meta name="description" content="Private real estate investment firm focused on industrial and multifamily assets in the Southeast.">
+    <meta name="image" content="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #1a5f3f;
+            --green-mid: #2d7a52;
+            --green-light: #e8f5ee;
+            --cream: #fafaf7;
+            --charcoal: #2c2c2c;
+            --gray: #6b6b6b;
+            --gray-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--charcoal);
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-light);
+            z-index: 100;
+            padding: 0 2rem;
+        }
+
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        nav .logo-mark {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav .nav-links a {
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: var(--gray);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--green-dark);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 500;
+            color: var(--green-dark);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .separator {
+            width: 60px;
+            height: 2px;
+            background: var(--green-dark);
+            margin: 1.5rem auto;
+        }
+
+        .hero h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--green-mid);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        section h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--green-dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        section p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        /* FOCUS AREAS */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .focus-card {
+            border: 1px solid var(--gray-light);
+            padding: 2rem;
+            border-radius: 2px;
+        }
+
+        .focus-card h4 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--green-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .focus-card p {
+            font-size: 0.88rem;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: var(--cream);
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 100%;
+        }
+
+        .contact-section .inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section a {
+            color: var(--green-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--green-mid);
+        }
+
+        /* INVESTOR LOGIN */
+        .investor-link {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .investor-link a {
+            font-size: 0.82rem;
+            color: var(--gray);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .investor-link a:hover {
+            color: var(--green-dark);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+            border-top: 1px solid var(--gray-light);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; letter-spacing: 2px; }
+            .hero h2 { font-size: 1.2rem; letter-spacing: 3px; }
+            nav .nav-links a { margin-left: 1.5rem; font-size: 0.78rem; }
+            section { padding: 3rem 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav .nav-links { display: none; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo-mark">East Fifth Capital</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#focus">Focus</a>
+                <a href="#contact">Contact</a>
+                <a href="portal.html">Investors</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>East Fifth</h1>
+            <div class="separator"></div>
+            <h2>Capital</h2>
+            <p>A private real estate investment firm focused on industrial and multifamily assets in the Southeast United States.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h3>About</h3>
+        <p>East Fifth Capital acquires and manages commercial real estate with a focus on long-term value creation. We target well-located industrial and multifamily properties in growth markets across the Southeast.</p>
+        <p>Our approach combines institutional discipline with hands-on asset management, emphasizing stable cash flow, operational efficiency, and capital preservation.</p>
+    </section>
+
+    <section id="focus">
+        <h3>Investment Focus</h3>
+        <div class="focus-grid">
+            <div class="focus-card">
+                <h4>Industrial</h4>
+                <p>Light industrial, flex, and warehouse properties serving established tenants in growing metro areas.</p>
+            </div>
+            <div class="focus-card">
+                <h4>Multifamily</h4>
+                <p>Workforce and market-rate apartment communities in supply-constrained Southeast markets.</p>
+            </div>
+            <div class="focus-card">
+                <h4>Value-Add</h4>
+                <p>Properties with below-market rents, deferred maintenance, or operational upside where active management drives returns.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="inner">
+            <h3>Contact</h3>
+            <p>For investment inquiries, please reach out directly.</p>
+            <p><a href="mailto:james.black@eastfifthcapital.com">james.black@eastfifthcapital.com</a></p>
+        </div>
+    </section>
+
+    <div class="investor-link">
+        <a href="portal.html">Investor Portal →</a>
+    </div>
+
+    <footer>
+        &copy; 2026 East Fifth Capital, LLC. All rights reserved.
+    </footer>
+
+</body>
+</html>

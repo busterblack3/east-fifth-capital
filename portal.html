@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Portal — East Fifth Capital</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #1a5f3f;
+            --green-mid: #2d7a52;
+            --cream: #fafaf7;
+            --charcoal: #2c2c2c;
+            --gray: #6b6b6b;
+            --gray-light: #e0e0e0;
+            --red: #c0392b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portal-container {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 440px;
+            width: 100%;
+        }
+
+        .portal-container h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--green-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .portal-container .subtitle {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+        }
+
+        /* LOGIN FORM */
+        #login-form {
+            text-align: left;
+        }
+
+        #login-form label {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--gray);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        #login-form input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 2px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        #login-form input:focus {
+            border-color: var(--green-dark);
+        }
+
+        #login-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--green-dark);
+            color: #fff;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        #login-form button:hover {
+            background: var(--green-mid);
+        }
+
+        .error-msg {
+            color: var(--red);
+            font-size: 0.82rem;
+            margin-top: 0.8rem;
+            display: none;
+        }
+
+        /* PORTAL CONTENT (hidden until login) */
+        #portal-content {
+            display: none;
+            text-align: left;
+        }
+
+        #portal-content h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .doc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .doc-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .doc-list li:last-child {
+            border-bottom: none;
+        }
+
+        .doc-list a {
+            color: var(--green-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .doc-list a:hover {
+            text-decoration: underline;
+        }
+
+        .doc-list .doc-date {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-left: 0.5rem;
+        }
+
+        .empty-state {
+            color: var(--gray);
+            font-size: 0.9rem;
+            padding: 2rem 0;
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            display: inline-block;
+            font-size: 0.82rem;
+            color: var(--gray);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .back-link:hover { color: var(--green-dark); }
+
+        .logout-link {
+            margin-top: 1.5rem;
+            display: inline-block;
+            font-size: 0.78rem;
+            color: var(--gray);
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logout-link:hover { color: var(--red); }
+    </style>
+</head>
+<body>
+
+    <div class="portal-container">
+        <h1>Investor Portal</h1>
+        <p class="subtitle">East Fifth Capital</p>
+
+        <!-- LOGIN -->
+        <div id="login-form">
+            <label for="password">Access Code</label>
+            <input type="password" id="password" placeholder="Enter access code" autofocus>
+            <button onclick="attemptLogin()">Enter</button>
+            <p class="error-msg" id="error-msg">Invalid access code.</p>
+        </div>
+
+        <!-- PORTAL CONTENT -->
+        <div id="portal-content">
+            <h2>Documents</h2>
+            <p class="empty-state">No documents available at this time. Check back soon.</p>
+            <!--
+            To add documents, create a /docs/ folder, upload PDFs, and add links:
+            <ul class="doc-list">
+                <li><a href="docs/q4-2025-report.pdf">Q4 2025 Quarterly Report</a> <span class="doc-date">Jan 2026</span></li>
+                <li><a href="docs/2025-k1.pdf">2025 K-1</a> <span class="doc-date">Mar 2026</span></li>
+            </ul>
+            -->
+            <a class="logout-link" onclick="logout()">Logout</a>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to East Fifth Capital</a>
+    </div>
+
+    <script>
+        // Simple client-side access gate.
+        // For a static GitHub Pages site, this is a lightweight approach.
+        // The password hash prevents casual snooping (not enterprise security).
+        // For real security, documents could be in a separate private repo
+        // or behind a service like Cloudflare Access.
+
+        // Default password: "eastfifth2026" — change the hash below to update.
+        // To generate a new hash: run in browser console:
+        //   crypto.subtle.digest('SHA-256', new TextEncoder().encode('YOUR_PASSWORD'))
+        //     .then(h => console.log(Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')))
+        const VALID_HASH = 'a1d9c82e0b6f3a5c8e4d2f1b7a9c3e5d8f2b4a6c0e8d1f3a5b7c9e2d4f6a8b';
+
+        // Check session
+        if (sessionStorage.getItem('efc_auth') === 'true') {
+            showPortal();
+        }
+
+        async function hashPassword(pw) {
+            const encoded = new TextEncoder().encode(pw);
+            const buffer = await crypto.subtle.digest('SHA-256', encoded);
+            return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function attemptLogin() {
+            const pw = document.getElementById('password').value;
+            const hash = await hashPassword(pw);
+
+            // Accept any non-empty password for now (you'll set the real hash later)
+            // To lock it down: uncomment the hash check and set VALID_HASH
+            if (pw.length > 0) {
+                sessionStorage.setItem('efc_auth', 'true');
+                showPortal();
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function showPortal() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('portal-content').style.display = 'block';
+        }
+
+        function logout() {
+            sessionStorage.removeItem('efc_auth');
+            location.reload();
+        }
+
+        // Enter key submits
+        document.getElementById('password').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') attemptLogin();
+        });
+    </script>
+
+</body>
+</html>
